@@ -34,7 +34,21 @@ public class UserController {
         response.set(createdUser);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    
+
+    @DeleteMapping
+    public ResponseEntity<String>deleteAllUsers(){
+        try {
+            // Delete all users from the database
+            userRepository.deleteAll();
+            // Return a success response
+            return ResponseEntity.ok().body("All users deleted successfully.");
+        } catch (Exception e) {
+            // Return an error response if an exception occurs
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to delete users: " + e.getMessage());
+        }
+    }
+
     private boolean isInvalidRequest(User user){
         return user.getFirstName() == null || user.getLastName() == null || user.getPhone() == null || user.getEmail() == null;
     }
