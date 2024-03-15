@@ -30,12 +30,6 @@ public class Product {
     private String imageURL;
 
     @Column
-    private int quantity;
-
-    @Column
-    private boolean isInStock;
-
-    @Column
     private String description;
 
     @Column
@@ -46,12 +40,10 @@ public class Product {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    public Product(String title, float price, String imageURL, int quantity, boolean isInStock, String description) {
+    public Product(String title, float price, String imageURL, String description) {
         this.title = title;
         this.price = price;
         this.imageURL = imageURL;
-        this.quantity = quantity;
-        this.isInStock = isInStock;
         this.description = description;
     }
 
