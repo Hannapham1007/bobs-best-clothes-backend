@@ -1,4 +1,4 @@
-package com.booleanuk.requests.products;
+package com.booleanuk.requests.product;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

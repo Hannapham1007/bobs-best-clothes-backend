@@ -1,5 +1,8 @@
-package com.booleanuk.requests.products;
+package com.booleanuk.requests.product;
 
+import com.booleanuk.requests.cartItem.CartItem;
+import com.booleanuk.requests.category.Category;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,12 +33,6 @@ public class Product {
     private String imageURL;
 
     @Column
-    private int quantity;
-
-    @Column
-    private boolean isInStock;
-
-    @Column
     private String description;
 
     @Column
@@ -46,12 +43,19 @@ public class Product {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    public Product(String title, float price, String imageURL, int quantity, boolean isInStock, String description) {
+    @ManyToOne
+    @JoinColumn(name="category_id", nullable = false)
+    @JsonIgnoreProperties("category")
+    private Category category;
+
+    @OneToOne
+    @JoinColumn(name = "cart-item-id")
+    CartItem cartItem;
+
+    public Product(String title, float price, String imageURL, String description) {
         this.title = title;
         this.price = price;
         this.imageURL = imageURL;
-        this.quantity = quantity;
-        this.isInStock = isInStock;
         this.description = description;
     }
 
