@@ -44,7 +44,7 @@ public class Product {
     private LocalDateTime updatedAt;
 
     @ManyToOne
-    @JoinColumn(name="category_id", nullable = false)
+    @JoinColumn(name="category_id")
     @JsonIgnoreProperties("category")
     private Category category;
 
