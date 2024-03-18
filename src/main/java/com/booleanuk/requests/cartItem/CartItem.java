@@ -22,8 +22,9 @@ public class CartItem {
     @Column
     private int quantity;
 
-    @OneToOne(mappedBy = "cartItem")
-    private Product product;
+    @OneToOne
+    @JoinColumn(name = "product-id")
+    Product product;
 
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
