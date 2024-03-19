@@ -1,5 +1,8 @@
 package com.booleanuk.requests.user;
 
+import com.booleanuk.requests.cartItem.CartItem;
+import com.booleanuk.requests.order.Order;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +11,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -39,6 +43,10 @@ public class User {
     @Column
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties(value = "user", allowSetters = true)
+    private List<Order> order;
 
     public User(String firstName, String lastName, String phone, String email) {
         this.firstName = firstName;
