@@ -48,8 +48,8 @@ public class Product {
     @JsonIgnoreProperties("category")
     private Category category;
 
-    @OneToOne(mappedBy = "product")
-    private CartItem cartItem;
+//    @OneToOne(mappedBy = "product")
+//    private CartItem cartItem;
 
     public Product(String title, float price, String imageURL, String description) {
         this.title = title;

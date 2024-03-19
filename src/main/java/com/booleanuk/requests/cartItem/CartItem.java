@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name="cart-item")
+@Table(name="cart_item")
 public class CartItem {
 
     @Id
@@ -22,8 +22,9 @@ public class CartItem {
     @Column
     private int quantity;
 
-    @OneToOne
-    @JoinColumn(name = "product-id")
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    @JsonIgnoreProperties("product")
     Product product;
 
     @ManyToOne
@@ -31,4 +32,7 @@ public class CartItem {
     @JsonIgnoreProperties("order")
     private Order order;
 
+    public Object getProductId() {
+        return product.getId();
+    }
 }

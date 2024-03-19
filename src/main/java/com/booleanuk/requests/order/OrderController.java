@@ -10,6 +10,8 @@ import com.booleanuk.requests.order.OrderResponse;
 import com.booleanuk.requests.product.Product;
 import com.booleanuk.requests.product.ProductRepository;
 import com.booleanuk.requests.reponses.ApiResponse;
+import com.booleanuk.requests.user.User;
+import com.booleanuk.requests.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("orders")
@@ -28,6 +31,13 @@ public class OrderController {
     @Autowired
     private CartItemRepository cartItemRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
+
+    @Autowired
+    private UserRepository userRepository;
+
 
     @GetMapping
     public ResponseEntity<OrderListResponse> getAllOrders(){
@@ -37,17 +47,71 @@ public class OrderController {
         return new ResponseEntity<>(orderListResponse, HttpStatus.OK);
     }
 
+//    @PostMapping
+//    public ResponseEntity<ApiResponse<?>> createOrder(@RequestBody Order order ){
+//        if(ValidationUtils.isInvalidOrder(order)){
+//            return Responses.badRequest("create", order.getClass().getSimpleName());
+//        }
+//
+//        Order createdOrder = this.orderRepository.save(order);
+//        System.out.println(order.getCartItems().size() + " CartItems");
+//        for(CartItem cartItem : order.getCartItems()) {
+//            Product product = ValidationUtils.getById(cartItem.getProduct().getId(), productRepository);
+//            System.out.println(cartItem.getProduct().getId() + " id");
+//            if(product != null){
+//                System.out.println(product + "product");
+//                cartItem.setOrder(createdOrder);
+//                cartItemRepository.save(cartItem);
+//            }
+//        }
+//        //Response
+//        OrderResponse response = new OrderResponse();
+//        response.set(createdOrder);
+//        return new ResponseEntity<>(response, HttpStatus.OK);
+//    }
+
     @PostMapping
-    public ResponseEntity<ApiResponse<?>> createOrder(@RequestBody Order order ){
-        if(ValidationUtils.isInvalidOrder(order)){
+    public ResponseEntity<ApiResponse<?>> createOrder(@RequestBody Order order) {
+        if (ValidationUtils.isInvalidOrder(order)) {
             return Responses.badRequest("create", order.getClass().getSimpleName());
         }
 
+        // Fetch the user from the database based on the provided user ID
+        User user = userRepository.findById(order.getUser().getId()).orElse(null);
+        if (user == null) {
+            return Responses.notFound(" user");
+        }
+        order.setUser(user);
+
         Order createdOrder = this.orderRepository.save(order);
+
+        List<CartItem> cartItems = new ArrayList<>();
+
+        for (CartItem cartItem : order.getCartItems()) {
+            Product product = productRepository.findById(cartItem.getProduct().getId()).orElse(null);
+            if (product != null) {
+                cartItem.setProduct(product);
+                cartItem.setOrder(createdOrder);
+                cartItemRepository.save(cartItem);
+                cartItems.add(cartItem);
+            } else{
+                return Responses.badRequest("find", "product");
+            }
+        }
+
+        createdOrder.setCartItems(cartItems);
+
+        // Fetch the order with fully populated cart items
+        createdOrder = orderRepository.findById(createdOrder.getId()).orElse(null);
+
+        // Response
         OrderResponse response = new OrderResponse();
         response.set(createdOrder);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+
+
 
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<?>> getOrderById(@PathVariable int id) {
