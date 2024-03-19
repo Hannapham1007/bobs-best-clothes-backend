@@ -1,6 +1,7 @@
 package com.booleanuk.requests.order;
 
 import com.booleanuk.requests.cartItem.CartItem;
+import com.booleanuk.requests.product.Product;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "shopping-sessions")
+@Table(name = "orders")
 public class Order {
 
     @Id
