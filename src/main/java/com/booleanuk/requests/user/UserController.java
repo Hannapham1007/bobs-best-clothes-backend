@@ -26,6 +26,17 @@ public class UserController {
         return new ResponseEntity<>(userListResponse, HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<ApiResponse<?>>getUserById(@PathVariable int id){
+        User user = ValidationUtils.getById(id, userRepository);
+        if (user == null){
+            return Responses.notFound("user");
+        }
+        UserResponse userResponse = new UserResponse();
+        userResponse.set(user);
+        return new ResponseEntity<>(userResponse, HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<ApiResponse<?>> createUser(@RequestBody User user){
         if(ValidationUtils.isInvalidUser(user)){

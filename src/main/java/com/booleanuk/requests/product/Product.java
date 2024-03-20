@@ -32,7 +32,7 @@ public class Product {
     @Column
     private String imageURL;
 
-    @Column
+    @Column (length = 1000)
     private String description;
 
     @Column
@@ -45,12 +45,11 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name="category_id")
-    @JsonIgnoreProperties("category")
+    @JsonIgnoreProperties("products")
     private Category category;
 
-    @OneToOne
-    @JoinColumn(name = "cart-item-id")
-    CartItem cartItem;
+//    @OneToOne(mappedBy = "product")
+//    private CartItem cartItem;
 
     public Product(String title, float price, String imageURL, String description) {
         this.title = title;

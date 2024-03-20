@@ -43,6 +43,10 @@ public class ProductController {
         }
         
         Product createdProduct = this.productRepository.save(product);
+
+        createdProduct.setCategory(product.getCategory());
+
+
         ProductResponse response = new ProductResponse();
         response.set(createdProduct);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
