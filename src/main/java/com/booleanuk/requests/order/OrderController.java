@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -47,28 +48,22 @@ public class OrderController {
         return new ResponseEntity<>(orderListResponse, HttpStatus.OK);
     }
 
-//    @PostMapping
-//    public ResponseEntity<ApiResponse<?>> createOrder(@RequestBody Order order ){
-//        if(ValidationUtils.isInvalidOrder(order)){
-//            return Responses.badRequest("create", order.getClass().getSimpleName());
-//        }
-//
-//        Order createdOrder = this.orderRepository.save(order);
-//        System.out.println(order.getCartItems().size() + " CartItems");
-//        for(CartItem cartItem : order.getCartItems()) {
-//            Product product = ValidationUtils.getById(cartItem.getProduct().getId(), productRepository);
-//            System.out.println(cartItem.getProduct().getId() + " id");
-//            if(product != null){
-//                System.out.println(product + "product");
-//                cartItem.setOrder(createdOrder);
-//                cartItemRepository.save(cartItem);
-//            }
-//        }
-//        //Response
-//        OrderResponse response = new OrderResponse();
-//        response.set(createdOrder);
-//        return new ResponseEntity<>(response, HttpStatus.OK);
-//    }
+    @GetMapping("/{userId}")
+    public ResponseEntity<ApiResponse<?>> getOrderByUserId(@PathVariable int userId){
+        User user = ValidationUtils.getById(userId, userRepository);
+        if(user == null){
+            return Responses.notFound("user");
+        }
+        List<Order> orders = new ArrayList<>();
+        for (Order order : orderRepository.findAll()){
+            if (order.getUser() == user){
+                orders.add(order);
+            }
+        }
+        OrderListResponse orderListResponse = new OrderListResponse();
+        orderListResponse.set(orders);
+        return new ResponseEntity<>(orderListResponse, HttpStatus.OK);
+    }
 
     @PostMapping
     public ResponseEntity<ApiResponse<?>> createOrder(@RequestBody Order order) {
