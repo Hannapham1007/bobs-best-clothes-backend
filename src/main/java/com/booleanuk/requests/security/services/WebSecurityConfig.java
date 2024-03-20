@@ -57,10 +57,9 @@ public class WebSecurityConfig {
                 .exceptionHandling((exception) -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers("/products", "/products/**").permitAll()
+                        .requestMatchers("/auth/**", "users/**", "orders/**").permitAll()
+                        .requestMatchers("/products", "/products/**", "/categories").permitAll()
                         .requestMatchers("/cartItems").hasRole("ADMIN")
-                        .requestMatchers("/orders").hasRole("USER")
                 );
         http.authenticationProvider(authenticationProvider());
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
