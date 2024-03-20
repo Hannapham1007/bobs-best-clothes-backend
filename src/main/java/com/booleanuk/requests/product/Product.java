@@ -45,7 +45,7 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name="category_id")
-    @JsonIgnoreProperties("category")
+    @JsonIgnoreProperties("products")
     private Category category;
 
 //    @OneToOne(mappedBy = "product")
