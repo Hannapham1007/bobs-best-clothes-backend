@@ -1,0 +1,152 @@
+[
+  {
+    "title": "GlideStep Pro Runners",
+    "description": "Engineered for runners who crave speed and comfort, the GlideStep Pro Runners feature a lightweight yet durable design. With responsive cushioning and breathable mesh upper, these shoes propel you forward mile after mile.",
+    "price": 99.99,
+    "imageURL": "https://images.unsplash.com/photo-1605348532760-6753d2c43329?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": {
+      "name": "shoes",
+      "description": "all kinds of footwear"
+    }
+  },
+  {
+    "title": "FlexFit Active Joggers",
+    "description": "Stay flexible and comfortable throughout your workout with the FlexFit Active Joggers. These joggers feature stretchy fabric and a tapered fit for unrestricted movement, making them ideal for running, yoga, or lounging.",
+    "price": 49.99,
+    "imageURL": "https://images.unsplash.com/photo-1608585617748-d55938680e85?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": {
+      "name": "pants",
+      "description": "all kinds of trousers"
+    }
+  },
+  {
+    "title": "ActiveCool Performance Tee",
+    "description": "Stay cool and dry during intense workouts with the ActiveCool Performance Tee. Made from moisture-wicking fabric, this tee keeps you comfortable and focused, while the athletic fit provides unrestricted movement.",
+    "price": 29.99,
+    "imageURL": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": {
+      "name": "shirts",
+      "description": "all kinds of tops"
+    }
+  },
+  {
+    "title": "UrbanTech Street Sneakers",
+    "description": "Embrace urban style with the UrbanTech Street Sneakers. Designed for versatility, these sneakers blend modern aesthetics with all-day comfort. The sleek silhouette and cushioned sole make them perfect for city explorers.",
+    "price": 79.99,
+    "imageURL": "https://images.unsplash.com/photo-1605408499391-6368c628ef42?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": {
+      "name": "shoes",
+      "description": "all kinds of footwear"
+    }
+  },
+  {
+    "title": "TrailBlaze Adventure Hikers",
+    "description": "Conquer any terrain with confidence in the TrailBlaze Adventure Hikers. These rugged hiking shoes are built to withstand the toughest trails while providing stability and traction. Waterproof construction keeps your feet dry in any weather.",
+    "price": 129.99,
+    "imageURL": "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=2400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": {
+      "name": "shoes",
+      "description": "all kinds of footwear"
+    }
+  },
+  {
+    "title": "SkyHigh Performance Basketball Shoes",
+    "description": "Elevate your game to new heights with the SkyHigh Performance Basketball Shoes. Featuring advanced ankle support and responsive cushioning, these shoes offer explosive energy return and superior grip on the court.",
+    "price": 149.99,
+    "imageURL": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": {
+      "name": "shoes",
+      "description": "all kinds of footwear"
+    }
+  },
+  {
+    "title": "ClassicComfort Casual Loafers",
+    "description": "Experience timeless style and unmatched comfort with the ClassicComfort Casual Loafers. Crafted from premium leather and featuring a cushioned footbed, these loafers are perfect for everyday wear, whether you're at work or out for a stroll.",
+    "price": 89.99,
+    "imageURL": "https://images.unsplash.com/photo-1595341888016-a392ef81b7de?q=80&w=1479&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": {
+      "name": "shoes",
+      "description": "all kinds of footwear"
+    }
+  },
+  {
+    "title": "CityChic Slim Fit Chinos",
+    "description": "Elevate your casual style with the CityChic Slim Fit Chinos. Tailored for a modern silhouette, these chinos offer versatility and sophistication. Pair them with a button-down shirt for a polished look or dress them down with a tee.",
+    "price": 59.99,
+    "imageURL": "https://images.unsplash.com/photo-1584865288642-42078afe6942?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": {
+      "name": "pants",
+      "description": "all kinds of trousers"
+    }
+  },
+  {
+    "title": "AdventureTech Cargo Pants",
+    "description": "Gear up for your next outdoor adventure with the AdventureTech Cargo Pants. These rugged pants feature ample pockets for storing essentials and durable construction that withstands rough terrain. Whether hiking or camping, these pants are up for the challenge.",
+    "price": 69.99,
+    "imageURL": "https://images.unsplash.com/photo-1548883354-7622d03aca27?q=80&w=1861&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": {
+      "name": "pants",
+      "description": "all kinds of trousers"
+    }
+  },
+  {
+    "title": "VintageDenim Distressed Jeans",
+    "description": "Embrace retro vibes with the VintageDenim Distressed Jeans. Featuring a classic denim wash and distressed detailing, these jeans add a touch of edgy style to your wardrobe. Pair them with a graphic tee for a laid-back look.",
+    "price": 54.99,
+    "imageURL": "https://images.unsplash.com/photo-1602293589930-45aad59ba3ab?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": {
+      "name": "pants",
+      "description": "all kinds of trousers"
+    }
+  },
+  {
+    "title": "UltimateComfort Lounge Pants",
+    "description": "Unwind in luxurious comfort with the UltimateComfort Lounge Pants. Crafted from soft, breathable fabric, these pants are perfect for lounging at home or running errands. The elastic waistband and relaxed fit ensure all-day coziness.",
+    "price": 39.99,
+    "imageURL": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": {
+      "name": "pants",
+      "description": "all kinds of trousers"
+    }
+  },
+  {
+    "title": "GraphicExpress Retro Print T-shirt",
+    "description": "Make a statement with the GraphicExpress Retro Print T-shirt. Featuring a bold graphic print inspired by vintage designs, this tee adds a pop of color and personality to your casual outfits.",
+    "price": 24.99,
+    "imageURL": "https://images.unsplash.com/photo-1581655353564-df123a1eb820?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": {
+      "name": "shirts",
+      "description": "all kinds of tops"
+    }
+  },
+  {
+    "title": "EssentialCotton Basic Tee",
+    "description": "Elevate your basics with the EssentialCotton Basic Tee. Crafted from premium cotton fabric, this tee offers supreme softness and durability. Versatile and timeless, it's a wardrobe staple for every season.",
+    "price": 19.99,
+    "imageURL": "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": {
+      "name": "shirts",
+      "description": "all kinds of tops"
+    }
+  },
+  {
+    "title": "WeekendVibes Relaxed Fit T-shirt",
+    "description": "Embrace laid-back style with the WeekendVibes Relaxed Fit T-shirt. With its loose silhouette and soft jersey fabric, this tee is perfect for lazy weekends and casual outings. Pair it with jeans or shorts for effortless cool.",
+    "price": 22.99,
+    "imageURL": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": {
+      "name": "shirts",
+      "description": "all kinds of tops"
+    }
+  },
+  {
+    "title": "TechStretch Active Polo",
+    "description": "Transition seamlessly from the gym to the streets with the TechStretch Active Polo. Combining athletic performance with refined style, this polo features stretchy fabric and moisture-wicking properties for all-day comfort and versatility.",
+    "price": 34.99,
+    "imageURL": "https://images.unsplash.com/photo-1571945153237-4929e783af4a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": {
+      "name": "shirts",
+      "description": "all kinds of tops"
+    }
+  }
+]
