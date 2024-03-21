@@ -89,17 +89,21 @@ public class OrderController {
     }
 
 
-
-
-    @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<?>> getOrderById(@PathVariable int id) {
-       Order orderToGet = ValidationUtils.getById(id, orderRepository);
-       if(orderToGet == null){
-           Responses.notFound("order");
+    @GetMapping("/{userId}")
+    public ResponseEntity<ApiResponse<?>> getOrdersByUserId(@PathVariable int userId) {
+       User user = ValidationUtils.getById(userId, userRepository);
+       if(user == null){
+           Responses.notFound("user");
        }
-       OrderResponse orderResponse = new OrderResponse();
-       orderResponse.set(orderToGet);
-       return new ResponseEntity<>(orderResponse, HttpStatus.OK);
+       List<Order> orders = new ArrayList<>();
+       for (Order order : orderRepository.findAll()){
+           if(order.getUser() == user){
+               orders.add(order);
+           }
+       }
+       OrderListResponse orderListResponse = new OrderListResponse();
+       orderListResponse.set(orders);
+       return new ResponseEntity<>(orderListResponse, HttpStatus.OK);
     }
 
     @DeleteMapping
