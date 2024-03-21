@@ -105,20 +105,6 @@ public class OrderController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-
-
-
-    @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<?>> getOrderById(@PathVariable int id) {
-       Order orderToGet = ValidationUtils.getById(id, orderRepository);
-       if(orderToGet == null){
-           Responses.notFound("order");
-       }
-       OrderResponse orderResponse = new OrderResponse();
-       orderResponse.set(orderToGet);
-       return new ResponseEntity<>(orderResponse, HttpStatus.OK);
-    }
-
     @DeleteMapping
     public ResponseEntity<ApiResponse<?>> deleteOrderById(@PathVariable int id){
         Order orderToDelete = ValidationUtils.getById(id, orderRepository);
