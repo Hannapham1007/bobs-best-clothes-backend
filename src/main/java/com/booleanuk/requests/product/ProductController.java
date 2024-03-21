@@ -5,8 +5,11 @@ import com.booleanuk.requests.category.Category;
 import com.booleanuk.requests.category.CategoryRepository;
 import com.booleanuk.requests.helpfunctions.Responses;
 import com.booleanuk.requests.helpfunctions.ValidationUtils;
+import com.booleanuk.requests.payload.request.AddProductRequest;
+import com.booleanuk.requests.payload.request.LoginRequest;
 import com.booleanuk.requests.reponses.ApiResponse;
 import com.booleanuk.requests.reponses.ErrorResponse;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,19 +36,20 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<ApiResponse<?>> createProduct(@RequestBody Product product){
-        if(ValidationUtils.isInvalidProduct(product)) {
-            return Responses.badRequest("create", "product");
-        }
+    public ResponseEntity<ApiResponse<?>> createProduct(@Valid @RequestBody AddProductRequest addProductRequest){
 
-        if(ValidationUtils.isInvalidCategory(product.getCategory())) {
+        Product productToAdd = new Product(addProductRequest.getTitle(), addProductRequest.getPrice(), addProductRequest.getImageURL(), addProductRequest.getDescription());
+        Product createdProduct = this.productRepository.save(productToAdd);
+
+        Category category = ValidationUtils.getById(addProductRequest.getCategoryId(), categoryRepository);
+
+        if(ValidationUtils.isInvalidCategory(category)){
             return Responses.badRequest("find", "category");
         }
-        
-        Product createdProduct = this.productRepository.save(product);
 
-        createdProduct.setCategory(product.getCategory());
+        createdProduct.setCategory(category);
 
+        createdProduct = this.productRepository.save(productToAdd);
 
         ProductResponse response = new ProductResponse();
         response.set(createdProduct);
