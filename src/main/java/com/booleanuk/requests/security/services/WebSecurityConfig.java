@@ -57,8 +57,8 @@ public class WebSecurityConfig {
                 .exceptionHandling((exception) -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/auth/**", "users/**", "orders/**").permitAll()
-                        .requestMatchers("/products", "/products/**", "/categories").permitAll()
+                        .requestMatchers("/auth/**", "users/**", "/products", "/products/**", "/categories").permitAll()
+                        .requestMatchers( "orders/**").hasRole("USER")
                         .requestMatchers("/cartItems").hasRole("ADMIN")
                 );
         http.authenticationProvider(authenticationProvider());
