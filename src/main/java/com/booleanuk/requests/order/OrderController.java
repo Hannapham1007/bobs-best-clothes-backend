@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -47,6 +48,22 @@ public class OrderController {
         return new ResponseEntity<>(orderListResponse, HttpStatus.OK);
     }
 
+    @GetMapping("/{userId}")
+    public ResponseEntity<ApiResponse<?>> getOrderByUserId(@PathVariable int userId){
+        User user = ValidationUtils.getById(userId, userRepository);
+        if(user == null){
+            return Responses.notFound("user");
+        }
+        List<Order> orders = new ArrayList<>();
+        for (Order order : orderRepository.findAll()){
+            if (order.getUser() == user){
+                orders.add(order);
+            }
+        }
+        OrderListResponse orderListResponse = new OrderListResponse();
+        orderListResponse.set(orders);
+        return new ResponseEntity<>(orderListResponse, HttpStatus.OK);
+    }
 
     @PostMapping
     public ResponseEntity<ApiResponse<?>> createOrder(@RequestBody Order order) {
@@ -86,24 +103,6 @@ public class OrderController {
         OrderResponse response = new OrderResponse();
         response.set(createdOrder);
         return new ResponseEntity<>(response, HttpStatus.OK);
-    }
-
-
-    @GetMapping("/{userId}")
-    public ResponseEntity<ApiResponse<?>> getOrdersByUserId(@PathVariable int userId) {
-       User user = ValidationUtils.getById(userId, userRepository);
-       if(user == null){
-           Responses.notFound("user");
-       }
-       List<Order> orders = new ArrayList<>();
-       for (Order order : orderRepository.findAll()){
-           if(order.getUser() == user){
-               orders.add(order);
-           }
-       }
-       OrderListResponse orderListResponse = new OrderListResponse();
-       orderListResponse.set(orders);
-       return new ResponseEntity<>(orderListResponse, HttpStatus.OK);
     }
 
     @DeleteMapping

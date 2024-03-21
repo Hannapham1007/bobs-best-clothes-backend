@@ -34,10 +34,19 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<ApiResponse<?>> createProduct(@RequestBody Product product){
-        if(ValidationUtils.isInvalidProduct(product)){
+        if(ValidationUtils.isInvalidProduct(product)) {
             return Responses.badRequest("create", "product");
         }
+
+        if(ValidationUtils.isInvalidCategory(product.getCategory())) {
+            return Responses.badRequest("find", "category");
+        }
+        
         Product createdProduct = this.productRepository.save(product);
+
+        createdProduct.setCategory(product.getCategory());
+
+
         ProductResponse response = new ProductResponse();
         response.set(createdProduct);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
