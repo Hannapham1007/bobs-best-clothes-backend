@@ -41,10 +41,10 @@ public class User {
     private String password;
 
     @Column
-    private String firstName;
+    private String firstname;
 
     @Column
-    private String lastName;
+    private String lastname;
 
     @Column
     private String phone;
@@ -69,10 +69,10 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
 
-    public User(String username, String firstName, String lastName, String phone, String email, String password) {
+    public User(String username, String firstname, String lastname, String phone, String email, String password) {
         this.username = username;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.phone = phone;
         this.email = email;
         this.password = password;

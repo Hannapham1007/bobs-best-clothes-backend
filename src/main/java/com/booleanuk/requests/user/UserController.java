@@ -62,4 +62,28 @@ public class UserController {
         }
     }
 
+    @CrossOrigin
+    @PutMapping("/{id}")
+    public ResponseEntity<ApiResponse<?>> updateUserById(@PathVariable int id, @RequestBody User user){
+        if(ValidationUtils.isInvalidUser((user))){
+            return Responses.badRequest("update", user.getClass().getSimpleName());
+        }
+        User userToUpdate = ValidationUtils.getById(id, userRepository);
+        if(userToUpdate == null){
+            return Responses.notFound("user");
+        }
+        userToUpdate.setUsername(user.getUsername());
+        userToUpdate.setPassword(user.getPassword());
+        userToUpdate.setFirstname(user.getFirstname());
+        userToUpdate.setLastname(user.getLastname());
+        userToUpdate.setPhone(user.getPhone());
+
+        this.userRepository.save(userToUpdate);
+
+        UserResponse response = new UserResponse();
+        response.set(userToUpdate);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+
 }

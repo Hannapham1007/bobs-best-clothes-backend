@@ -19,7 +19,7 @@ public class ValidationUtils {
 
     public static boolean isInvalidUser(User user) {
         // Add user-specific validation logic here
-        return user.getFirstName() == null || user.getLastName() == null || user.getPhone() == null || user.getEmail() == null;
+        return user.getFirstname() == null || user.getLastname() == null || user.getPhone() == null || user.getEmail() == null;
     }
 
     public static boolean isInvalidOrder(Order order) {
