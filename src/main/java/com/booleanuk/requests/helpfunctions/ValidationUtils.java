@@ -4,6 +4,8 @@ import com.booleanuk.requests.category.Category;
 import com.booleanuk.requests.order.Order;
 import com.booleanuk.requests.product.Product;
 import com.booleanuk.requests.user.User;
+import com.booleanuk.requests.roles.Role;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public class ValidationUtils {
@@ -25,6 +27,11 @@ public class ValidationUtils {
     public static boolean isInvalidOrder(Order order) {
         // Add category-specific validation logic here
         return order.getTotal() <=0 || order.getCartItems() == null;
+    }
+
+    public static boolean isInvalidRole(Role role){
+        return role.getName() == null;
+
     }
 
     public static <T> T getById(int id, JpaRepository<T, Integer> repository) {
